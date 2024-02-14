@@ -24,7 +24,7 @@ jobs:
   sync-branch-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1.0
+      - uses: remarkablemark/sync-branch@v1.1
         with:
           base: pr
           title: Sync branch title
@@ -33,7 +33,7 @@ jobs:
   sync-branch-token:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1.0.2
+      - uses: remarkablemark/sync-branch@v1.1.0
         with:
           base: token
           token: ${{ secrets.GITHUB_TOKEN }}
