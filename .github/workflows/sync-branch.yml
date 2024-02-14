@@ -2,12 +2,21 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
+      version:
+        description: sync-branch version
+        required: true
+        default: master
+
+env:
+  VERSION: ${{ inputs.version || 'v1' }}
 
 jobs:
   sync-branch-base:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1
+      - uses: remarkablemark/sync-branch@${{ env.VERSION }}
         with:
           base: base
           head: master
@@ -15,7 +24,7 @@ jobs:
   sync-branch-squash:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1
+      - uses: remarkablemark/sync-branch@${{ env.VERSION }}
         with:
           base: squash
           merge: squash
@@ -23,7 +32,7 @@ jobs:
   sync-branch-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1
+      - uses: remarkablemark/sync-branch@${{ env.VERSION }}
         with:
           base: pr
           title: Sync branch title
@@ -32,7 +41,7 @@ jobs:
   sync-branch-token:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1
+      - uses: remarkablemark/sync-branch@${{ env.VERSION }}
         with:
           base: token
           token: ${{ secrets.GITHUB_TOKEN }}
