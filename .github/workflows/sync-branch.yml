@@ -16,7 +16,7 @@ jobs:
   sync-branch-squash:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1.1
+      - uses: remarkablemark/sync-branch@v1
         with:
           base: squash
           merge: squash
@@ -33,7 +33,7 @@ jobs:
   sync-branch-token:
     runs-on: ubuntu-latest
     steps:
-      - uses: remarkablemark/sync-branch@v1.1
+      - uses: remarkablemark/sync-branch@v1.1.0
         with:
           base: token
           token: ${{ secrets.GITHUB_TOKEN }}
